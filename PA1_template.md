@@ -6,17 +6,6 @@
 
 ```r
 library( data.table )
-```
-
-```
-## data.table 1.9.6  For help type ?data.table or https://github.com/Rdatatable/data.table/wiki
-```
-
-```
-## The fastest way to learn (by data.table authors): https://www.datacamp.com/courses/data-analysis-the-data-table-way
-```
-
-```r
 dt <- fread( "activity.csv" )
 ```
 
@@ -28,7 +17,7 @@ dt <- fread( "activity.csv" )
 hist( dt$steps, ylim = c( 0L, nrow( dt ) ) )
 ```
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png)
+![plot of chunk histogram](figure/histogram-1.png)
 
 ### Step 2b: Compute mean & median of steps taken
 
@@ -62,7 +51,7 @@ a_MeanSteps <- wDT[[ "RwMeans" ]]
 plot( wDT$interval, a_MeanSteps, type = "l" )
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
 
 
 ```r
@@ -106,7 +95,7 @@ Total number of missing values: 2304
 hist( dt2$steps, ylim = c( 0L, nrow( dt2 ) ) )
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-6](figure/unnamed-chunk-6-1.png)
 
 Mean: 37.3806922
 Median: 0
@@ -121,26 +110,6 @@ is that it raises the frequency of each step in the histogram. At the same time,
 
 ```r
 library( lubridate )
-```
-
-```
-## 
-## Attaching package: 'lubridate'
-```
-
-```
-## The following objects are masked from 'package:data.table':
-## 
-##     hour, mday, month, quarter, wday, week, yday, year
-```
-
-```
-## The following object is masked from 'package:base':
-## 
-##     date
-```
-
-```r
 dt2[ , date2 := fast_strptime( date, "%Y-%m-%d", lt = F ) ]
 dt2[ , day := weekdays( date2 ) ]
 
@@ -166,7 +135,7 @@ plot( wDT$interval, a_Mean_Wkday, xlab = "Interval", ylab = "No of Steps",
       type = "l" )
 ```
 
-![plot of chunk unnamed-chunk-8](figure/unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png)
 
 
 
